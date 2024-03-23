@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Prefab/Scenes/MainMenu.unity
+    guid: 58298e2a694a44b48a333fa54b724b9b
+  - enabled: 1
+    path: Assets/Prefab/Scenes/Shop.unity
+    guid: 4ed4a80a00c85a74f8fb6b6f866134b0
+  - enabled: 1
+    path: Assets/Prefab/Scenes/Stage1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Prefab/Scenes/Stage3.unity
+    guid: 188547ff0be6c38429bff67a7eada25e
+  m_configObjects: {}

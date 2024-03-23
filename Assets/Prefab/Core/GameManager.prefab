@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6059915868666996349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5228401507385790209}
+  - component: {fileID: 2555757190281662530}
+  - component: {fileID: 1317254123432683051}
+  - component: {fileID: 8613424355635292387}
+  - component: {fileID: 7287053548114218214}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5228401507385790209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059915868666996349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.412214, y: -22.438848, z: 13.188677}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2555757190281662530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059915868666996349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b676fbac8d46a4a97fad2b8aa57f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedUPItems:
+  - {fileID: 2805250704196383554, guid: de05064b20ad0fc4990d35196e0874ca, type: 3}
+  CoinItems:
+  - {fileID: 2805250704196383554, guid: 8ad5df2da9ffdcd47a0f0616f54ba703, type: 3}
+--- !u!114 &1317254123432683051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059915868666996349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ae077a74cfe684ab83cc6c2a6fb9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReverseDashEnemy: {fileID: 8389323913263904244, guid: d9c85aaef09acb0409dbc6bba5714831, type: 3}
+  FowardDashEnemy: {fileID: 8389323913263904244, guid: fa5fbb43ba7cf4745804c05068dbb8c8, type: 3}
+--- !u!114 &8613424355635292387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059915868666996349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b3e75376b928f45932185911bf24b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObj: {fileID: 0}
+  WayPoints: {fileID: 0}
+  _AIEnemySpawner: {fileID: 1317254123432683051}
+  _ItemManager: {fileID: 2555757190281662530}
+  _UIManager: {fileID: 7287053548114218214}
+  _startTime: 0
+  _endTime: 0
+  RaceClearTime: 0
+  bTimeMove: 1
+--- !u!114 &7287053548114218214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059915868666996349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18585c4663123e347b6aeb2f8435bfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Needle: {fileID: 0}
+  playerVelo: 0
+  BuyPartsIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BuyPartsSprites:
+  - {fileID: 21300000, guid: 4e163f436718f5f48abba4b6b5efd155, type: 3}
+  - {fileID: 21300000, guid: 5633a9e8666b0a747ac165d8773f4a32, type: 3}
+  - {fileID: 21300000, guid: 845f8510fe1164040b1e9b86681b6f0b, type: 3}
+  - {fileID: 21300000, guid: 5aee46469ca7696488d1ae8229d27b69, type: 3}
+  - {fileID: 21300000, guid: b327549478e8ee84199aba0f5404b61c, type: 3}
+  WarningObj: {fileID: 0}
+  ShopUI: {fileID: 0}
+  Timer: {fileID: 0}
+  Laps: {fileID: 0}
+  GainItem: {fileID: 0}
+  PlayerLaps: 1
+  AILaps: 0
