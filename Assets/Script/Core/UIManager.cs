@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class UIManager : MonoBehaviour
     public Sprite[] BuyPartsSprites;
     public GameObject WarningObj;
     public GameObject ShopUI;
-    
+
+    public GameObject GameOverUI;
+    public TextMeshProUGUI RaceEndTime;
+    public TextMeshProUGUI RaceResult;
+    public TextMeshProUGUI RaceEndMoney;
 
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI Laps;
@@ -52,7 +57,6 @@ public class UIManager : MonoBehaviour
             if (buyPart != null)
             {   
                 BuyPartsIcons[partIconIndex].gameObject.SetActive(true);
-                Debug.Log("ADDImage" +  buyPart);
                 BuyPartsIcons[partIconIndex].sprite = BuyPartsSprites[i];
 
                 if(partIconIndex < BuyPartsSprites.Length - 1)
@@ -72,7 +76,7 @@ public class UIManager : MonoBehaviour
     }
     public void TimeText()
     {
-        Timer.text = GameManager.Instance._startTime.ToString("F2") + " sec";
+        Timer.text = GameManager.Instance._raceTime.ToString("F2") + " sec";
     }
 
     public void CountLaps()
@@ -105,5 +109,20 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene("Stage3");
         GameInstance.Instance.Stage = 3;
+    }
+
+    public void ActiveGameOverUI()
+    {
+        GameOverUI.SetActive(true);
+        RaceEndMoney.text = GameInstance.Instance.Money.ToString() + "$";
+        RaceEndTime.text = GameManager.Instance._raceTime.ToString("F2") + "SEC";
+        if(PlayerLaps > AILaps)
+        {
+            RaceResult.text = "YOU WIN";
+        }
+        else
+        {
+            RaceResult.text = "YOU Lose";
+        }
     }
 }

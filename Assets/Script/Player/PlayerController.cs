@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] 
     public Transform TargetPoint;
 
-    [HideInInspector]
     public bool CanTouchFinishLine = false;
 
     public GameObject Danger;
@@ -100,8 +101,26 @@ public class PlayerController : MonoBehaviour
         }
         
         if(collision.gameObject.name == "FinishLine" && CanTouchFinishLine == true)
-        {
+        {   
+            if(GameInstance.Instance.Stage == 3)
+            {
+                GameManager.Instance.RaceEnd();
+            }
+            else if (GameManager.Instance._UIManager.PlayerLaps >= 3)
+            {   
+                GameManager.Instance.RaceEnd();
+            }
+
             GameManager.Instance._UIManager.PlayerLaps += 1;
+            GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
+            foreach (GameObject item in items)
+            {
+                if (item != null)
+                {
+                    Destroy(item);
+                }
+            }
+            GameManager.Instance._ItemManager.StartItemSpawn();
         }
 
         if (collision.gameObject.tag == "SlowObj" && ActiveWheel == false)

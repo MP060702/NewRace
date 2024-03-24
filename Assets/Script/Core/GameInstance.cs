@@ -8,6 +8,7 @@ public class GameInstance : MonoBehaviour
     public List<string> PartsData = new List<string>();
     public int Money = 0;
     public int Stage = 0;
+    public float RaceClearTime;
 
     private void Awake()
     {

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Prefab/Scenes/Stage1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Prefab/Scenes/Stage2.unity
+    guid: 3a36d010c7916ad49b571e87a41caacc
+  - enabled: 1
     path: Assets/Prefab/Scenes/Stage3.unity
-    guid: 188547ff0be6c38429bff67a7eada25e
+    guid: 35d2c1bc78d0aa944b303180165ca665
   m_configObjects: {}

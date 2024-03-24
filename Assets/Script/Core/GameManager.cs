@@ -14,9 +14,8 @@ public class GameManager : MonoBehaviour
     public ItemManager _ItemManager;
     public UIManager _UIManager;
 
-    public float _startTime = 0;
+    public float _raceTime;
     public float _endTime = 0;
-    public float RaceClearTime;
     public bool bTimeMove = true;
 
     public GameObject[] PartObj;
@@ -42,8 +41,8 @@ public class GameManager : MonoBehaviour
         _ItemManager = GetComponent<ItemManager>();
         _UIManager = GetComponent<UIManager>();
         _AIEnemySpawner.StartCoroutine("SpawnEnemy");
-
         RaceStart();
+
     }
 
     private void Update()
@@ -51,6 +50,7 @@ public class GameManager : MonoBehaviour
         _UIManager.MoveNeedle();
         RecordTimeStart();
         _UIManager.AddPartsIcon();
+
     }
 
     public PlayerController Player() { return PlayerObj.GetComponent<PlayerController>(); }
@@ -58,17 +58,25 @@ public class GameManager : MonoBehaviour
     public void RaceStart()
     {
         _ItemManager.StartItemSpawn();
+        StartTime();
+        RecordTimeStart();
+    }
+
+    public void RaceEnd()
+    {
+        RecordTimeEnd();
+        StopTIme();
+        _UIManager.ActiveGameOverUI();
     }
 
     public void RecordTimeStart()
     {
-        _startTime = Time.time;
+        _raceTime = Time.time;
     }
 
     public void RecordTimeEnd()
     {
-        _endTime = Time.time;
-        RaceClearTime = _endTime - _startTime;
+        GameInstance.Instance.RaceClearTime += _raceTime;
     }
 
     public void StopTIme()
