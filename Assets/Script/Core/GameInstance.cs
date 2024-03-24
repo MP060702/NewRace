@@ -9,6 +9,8 @@ public class GameInstance : MonoBehaviour
     public int Money = 0;
     public int Stage = 0;
     public float RaceClearTime;
+    public List<float> Ranks = new List<float>() { 0, 0, 0, 0, 0 };
+
 
     private void Awake()
     {
@@ -21,5 +23,19 @@ public class GameInstance : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void AddRank()
+    {
+        Ranks.Add(RaceClearTime);
+        Ranks.Sort();
+        Ranks.Reverse();
+
+        if(Ranks.Count > 5 ) 
+        {
+            Ranks.RemoveAt(Ranks.Count - 1);
+        }
+        
+        RaceClearTime = 0;
     }
 }

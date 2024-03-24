@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.RaceEnd();
             }
 
+            CanTouchFinishLine = false;
+
             GameManager.Instance._UIManager.PlayerLaps += 1;
             GameObject[] items = GameObject.FindGameObjectsWithTag("Item");
             foreach (GameObject item in items)

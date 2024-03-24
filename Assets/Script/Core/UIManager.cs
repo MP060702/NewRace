@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     public int PlayerLaps;
     public int AILaps;
 
+    public int countdownTime = 3;
+    public TextMeshProUGUI countdownDisplay;
     public void MoveNeedle()
     {
         playerVelo = GameManager.Instance.Player()._rigidBody.velocity.magnitude * 3.6f ;
@@ -65,6 +67,25 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public IEnumerator CountdownToStart()
+    {
+
+        while (countdownTime > 0)
+        {
+            GameManager.Instance.IsMove = false;
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+
+        }
+
+        GameManager.Instance.IsMove = true;
+        countdownDisplay.text = "GO!";
+        yield return new WaitForSeconds(1f);
+
+        countdownDisplay.gameObject.SetActive(false);
+    }
+
     public void MarkItems(string item)
     {
         GainItem.text = "x " + item;
@@ -76,7 +97,7 @@ public class UIManager : MonoBehaviour
     }
     public void TimeText()
     {
-        Timer.text = GameManager.Instance._raceTime.ToString("F2") + " sec";
+        Timer.text = GameManager.Instance.CurrentRoundTime.ToString("F2") + " sec";
     }
 
     public void CountLaps()
@@ -115,7 +136,7 @@ public class UIManager : MonoBehaviour
     {
         GameOverUI.SetActive(true);
         RaceEndMoney.text = GameInstance.Instance.Money.ToString() + "$";
-        RaceEndTime.text = GameManager.Instance._raceTime.ToString("F2") + "SEC";
+        RaceEndTime.text = GameManager.Instance.CurrentRoundTime.ToString("F2") + "SEC";
         if(PlayerLaps > AILaps)
         {
             RaceResult.text = "YOU WIN";

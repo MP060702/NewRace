@@ -62,5 +62,10 @@ public class AIController : MonoBehaviour
         {
             GameManager.Instance._UIManager.AILaps += 1;
         }
+
+        if(collision.gameObject.tag == "NPC")
+        {
+            collision.gameObject.GetComponent<Rigidbody>().mass = 1;
+        }
     }
 }

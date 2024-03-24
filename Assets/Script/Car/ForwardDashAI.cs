@@ -15,6 +15,7 @@ public class ForwardDashAI : MonoBehaviour
         carMoveSystem = GetComponent<CarMoveSystem>();
         transform.LookAt(GameManager.Instance.Player().transform.position);
         TargetPoint = GameManager.Instance.WayPoints.GetChild(WayIndex);
+        Destroy(gameObject, 6f);
     }
 
     private void Update()

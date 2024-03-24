@@ -39,29 +39,32 @@ public class CarMoveSystem : MonoBehaviour
 
     public void MovedCar(float motorTorque, float steering, bool bIsBreak)
     {
-        motorTorque *= MaxMotor;
-        steering *= MaxSteer;
-
-        foreach (AxleInfo axleInfo in AxleInfos)
+        if (GameManager.Instance.IsMove == true)
         {
-            if (axleInfo.b_Steering)
+            motorTorque *= MaxMotor;
+            steering *= MaxSteer;
+
+            foreach (AxleInfo axleInfo in AxleInfos)
             {
-                axleInfo.LeftWheel.steerAngle = steering;
-                axleInfo.RightWheel.steerAngle = steering;
+                if (axleInfo.b_Steering)
+                {
+                    axleInfo.LeftWheel.steerAngle = steering;
+                    axleInfo.RightWheel.steerAngle = steering;
+                }
+                if (axleInfo.b_Motor)
+                {
+                    axleInfo.LeftWheel.motorTorque = motorTorque;
+                    axleInfo.RightWheel.motorTorque = motorTorque;
+                }
+
+                float _break = (bIsBreak ? 1 : 0);
+
+                axleInfo.LeftWheel.brakeTorque = BreakForce * _break;
+                axleInfo.RightWheel.brakeTorque = BreakForce * _break;
+
+                ApplyLocalPositionToVisuals(axleInfo.LeftWheel);
+                ApplyLocalPositionToVisuals(axleInfo.RightWheel);
             }
-            if (axleInfo.b_Motor)
-            {
-                axleInfo.LeftWheel.motorTorque = motorTorque;
-                axleInfo.RightWheel.motorTorque = motorTorque;
-            }
-
-            float _break = (bIsBreak ? 1 : 0);
-
-            axleInfo.LeftWheel.brakeTorque = BreakForce * _break;
-            axleInfo.RightWheel.brakeTorque = BreakForce * _break;
-
-            ApplyLocalPositionToVisuals(axleInfo.LeftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.RightWheel);
         }
     }
 

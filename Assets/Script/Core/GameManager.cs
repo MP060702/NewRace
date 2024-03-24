@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public ItemManager _ItemManager;
     public UIManager _UIManager;
 
-    public float _raceTime;
-    public float _endTime = 0;
+    public float StartTimes;
+    public float CurrentRoundTime;
     public bool bTimeMove = true;
 
     public GameObject[] PartObj;
@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject ShopUI;
     public GameObject PlayerUI;
 
+    public bool IsMove = true;
+
     private void Awake()
-    {
+    {   
         if (Instance == null)
         {
             Instance = this;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         _UIManager = GetComponent<UIManager>();
         _AIEnemySpawner.StartCoroutine("SpawnEnemy");
         RaceStart();
+        ResetTimer();
 
     }
 
@@ -58,7 +61,9 @@ public class GameManager : MonoBehaviour
     public void RaceStart()
     {
         _ItemManager.StartItemSpawn();
+        PlayerUI.SetActive(true);
         StartTime();
+        _UIManager.StartCoroutine("CountdownToStart");
         RecordTimeStart();
     }
 
@@ -66,17 +71,23 @@ public class GameManager : MonoBehaviour
     {
         RecordTimeEnd();
         StopTIme();
+        PlayerUI.SetActive(false);
         _UIManager.ActiveGameOverUI();
     }
 
     public void RecordTimeStart()
     {
-        _raceTime = Time.time;
+       CurrentRoundTime = Time.time - StartTimes;
     }
 
     public void RecordTimeEnd()
     {
-        GameInstance.Instance.RaceClearTime += _raceTime;
+        GameInstance.Instance.RaceClearTime += CurrentRoundTime;
+    }
+    
+    public void ResetTimer()
+    {
+        StartTimes = Time.time;
     }
 
     public void StopTIme()
